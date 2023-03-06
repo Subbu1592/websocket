@@ -42,7 +42,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = event["message"]
         username = event["username"]
         room = event["room"]
-        await self.save_message('Subhash', self.room_name, message)
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
