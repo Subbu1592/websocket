@@ -9,7 +9,7 @@ def index(request):
 
 def room(request, room_name):
     username = request.GET.get('username')
-    messages = Message.objects.filter(room=room_name)
+    messages = Message.objects.filter(room=room_name)[0:25]
     context = {
         'room_name': room_name,
         'username': username,

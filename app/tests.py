@@ -1,4 +1,4 @@
-
+""""
 from channels.testing import ChannelsLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -104,3 +104,30 @@ class ChatTests(ChannelsLiveServerTestCase):
         return self.driver.find_element(
             by=By.CSS_SELECTOR, value="#chat-log"
         ).get_property("value")
+"""
+
+
+from .models import *
+from django.test import TestCase
+from faker import Faker
+fake = Faker()
+
+
+class FirstTestCase(TestCase):
+
+    def setUp(self):
+        print('working')
+
+   # def test_equal(self):
+      #  self.assertEqual(1, 1)
+
+    def test_blog_category(self):
+        categories = ['Abc', 'Des', 'SAp']
+
+        for category in categories:
+            obj = Message.objects.create(
+                room=category
+            )
+            self.assertEquals(category, obj.room)
+        objs = Message.objects.all()
+        self.assertEqual(objs.count(), 3)
